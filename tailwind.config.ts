@@ -24,7 +24,8 @@ const config: Config = {
         xl: '1220px',
       },
       backgroundImage: {
-        mainBG: " url('../../public/images/shapes.png')",
+        mainBG: "url('../../public/images/shapes.png')",
+        checkBox: "url('../../public/images/checkBox.svg')",
       },
     },
   },

@@ -1,10 +1,6 @@
 import type { ReactElement } from 'react';
 
-import BalanceBlock from '@/components/BalanceBlock/BalanceBlock';
-import Header from '@/components/Header/Header';
-import MainSection from '@/components/MainSection/MainSection';
-import PartnersSection from '@/components/PartnersSection/PartnersSection';
-import ReportsSection from '@/components/ReportsSection/ReportsSection';
+import { BalanceBlock, FormSection, Header, MainSection, PartnersSection, ReportsSection } from '@/components';
 
 export default function Home(): ReactElement {
   return (
@@ -16,6 +12,7 @@ export default function Home(): ReactElement {
           <BalanceBlock />
           <PartnersSection />
           <ReportsSection />
+          <FormSection />
         </article>
       </main>
     </>
