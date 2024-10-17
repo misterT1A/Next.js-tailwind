@@ -14,7 +14,6 @@ export default function Home(): ReactElement {
     <>
       <Header />
       <main>
-        reportsSection
         <article>
           <MainSection isActive={activeSection === Sections.mainSection} onInView={handleInView} />
           <BalanceBlock isActive={activeSection === Sections.balanceSection} onInView={handleInView} />

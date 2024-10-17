@@ -5,6 +5,8 @@ import Link from 'next/link';
 import type { MouseEvent } from 'react';
 import { useState, type ReactElement } from 'react';
 
+import { Sections } from '@/types/types';
+
 import Container from '../Container/Container';
 
 const links = ['Преимущества', 'Как работаем'];
@@ -20,15 +22,17 @@ const Header = (): ReactElement => {
     const element = (event.target as HTMLElement).textContent;
     switch (element) {
       case 'Преимущества':
-        const section1 = document.getElementById('balanceSection');
+        const section1 = document.getElementById(Sections.balanceSection);
         if (section1) {
           section1.scrollIntoView({ behavior: 'smooth' });
+          setMenuOpen(false);
         }
         break;
       case 'Как работаем':
-        const section2 = document.getElementById('partnerSection');
+        const section2 = document.getElementById(Sections.reportsSection);
         if (section2) {
           section2.scrollIntoView({ behavior: 'smooth' });
+          setMenuOpen(false);
         }
         break;
       default:
@@ -40,7 +44,7 @@ const Header = (): ReactElement => {
     <header className="bg-gray3 py-[15px] md:py-[32px] xl:py-[48px]">
       <Container>
         <div className="flex items-center justify-between md:px-[10px] lg:px-0">
-          <div className="relative z-30 w-fit rounded-lg bg-white px-[34px] py-[5px] font-[900] text-black md:px-[48px] md:text-[22px] md:font-extrabold">
+          <div className="relative z-50 w-fit rounded-lg bg-white px-[34px] py-[5px] font-[900] text-black md:px-[48px] md:text-[22px] md:font-extrabold">
             LOGO
           </div>
           <button
