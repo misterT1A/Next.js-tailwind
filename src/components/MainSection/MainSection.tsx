@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-import Button from '../Button/Button';
+import Button, { BtnTypeEnum } from '../Button/Button';
 import Container from '../Container/Container';
 import TabsList from '../TabsList/TabsList';
 
@@ -24,7 +24,7 @@ const MainSection = (): ReactElement => {
         <div className="mb:pb-[94px] mt-[-5px] bg-gray3 pb-[38px] pt-[18px] md:mt-[-143px] md:pb-[7px] lg:mt-[-292px] lg:pb-[94px] lg:pt-[39px]">
           <Container>
             <>
-              <Button text="Заказать звонок" styles="lg:max-w-[210px]" />
+              <Button variant={BtnTypeEnum.orange} text="Заказать звонок" styles="lg:max-w-[210px]" />
               <div className="relative z-20 mt-[80px] flex flex-col md:mt-[120px] md:flex-row md:items-start lg:mt-[185px]">
                 <h3 className="mb-[25px] text-[24px] font-[700] leading-[31px] md:w-[52%] md:pr-[60px] md:text-[28px] md:leading-[120%] lg:pr-[133px] lg:text-[32px]">
                   Дополнительные источники выручки для разных компаний
