@@ -1,7 +1,10 @@
 'use client';
 
 import type { ChangeEvent, FormEvent } from 'react';
-import { useState, type ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import { Sections, type ICompTypes } from '@/types/types';
 
 import Button, { BtnTypeEnum } from '../Button/Button';
 import Container from '../Container/Container';
@@ -11,11 +14,22 @@ const validateEmail = (value: string): boolean => {
   return emailPattern.test(value);
 };
 
-const FormSection = (): ReactElement => {
+const FormSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
   const [message, setMessage] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<string | null>(null);
+
+  const { ref, inView } = useInView({
+    threshold: 0.8,
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      onInView(Sections.formSection);
+    }
+  }, [onInView, inView]);
 
   const handleMessage = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     setMessage(event.target.value);
@@ -40,7 +54,11 @@ const FormSection = (): ReactElement => {
   const isButtonDisabled = !email || !!emailError || !isChecked;
 
   return (
-    <section className="bg-gray3 pb-[26px] pt-[81px] md:pt-[53px] lg:pb-[220px] lg:pt-[130px]">
+    <section
+      ref={ref}
+      id={Sections.formSection}
+      className={`bg-gray3 pb-[26px] pt-[81px] md:pt-[53px] lg:pb-[220px] lg:pt-[130px] ${isActive ? 'border-2 border-orange' : ''}`}
+    >
       <Container>
         <form className="flex flex-col gap-[35px] lg:gap-[60px]" onSubmit={handleSubmit}>
           <h5 className="text-[24px] font-[700] leading-[31px] md:text-[28px] md:leading-[120%] lg:text-[32px]">
@@ -78,7 +96,7 @@ const FormSection = (): ReactElement => {
                 />
                 <label
                   htmlFor="privacyPolicy"
-                  className={`flex h-[14px] min-w-[14px] cursor-pointer items-center justify-center rounded-[4px] border-[1px] border-gray1 transition-all duration-300 ${isChecked ? 'bg-checkBox border-orange bg-orange bg-center' : 'bg-transparent'}`}
+                  className={`flex h-[14px] min-w-[14px] cursor-pointer items-center justify-center rounded-[4px] border-[1px] border-gray1 transition-all duration-300 ${isChecked ? 'border-orange bg-orange bg-checkBox bg-center' : 'bg-transparent'}`}
                 ></label>
                 <span className="mt-[-3px] pr-[3px] text-[14px]">
                   Я ознакомлен(а) с{' '}

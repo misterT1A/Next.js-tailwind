@@ -20,7 +20,7 @@ const TabsList = (): ReactElement => {
             <button
               key={index}
               className={`transition-color relative z-10 w-1/2 px-[12px] py-[5px] text-[12px] font-[700] duration-300 ease-in-out md:px-[22px] md:py-[6px] md:text-[16px] md:leading-[21px] lg:px-[37px] lg:py-[10px] lg:text-[24px] lg:leading-[32px] ${
-                activeTab === index ? 'text-white' : 'text-gray1'
+                activeTab === index ? 'text-white' : 'text-gray1 hover:text-black'
               }`}
               onClick={() => setActiveTab(index)}
             >

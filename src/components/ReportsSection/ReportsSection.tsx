@@ -1,5 +1,10 @@
+'use client';
+
 import Image from 'next/image';
-import type { ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import { Sections, type ICompTypes } from '@/types/types';
 
 import Button, { BtnTypeEnum } from '../Button/Button';
 import Container from '../Container/Container';
@@ -10,9 +15,24 @@ const list = [
   'Ежемесячные автоматические отчёты для каждого правообладателя.',
 ];
 
-const ReportsSection = (): ReactElement => {
+const ReportsSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
+  const { ref, inView } = useInView({
+    threshold: 0.8,
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      onInView(Sections.reportsSection);
+    }
+  }, [onInView, inView]);
+
   return (
-    <section className="overflow-hidden bg-gray4 pb-[50px] pt-[20px] md:pb-[71px] lg:pt-[97px]">
+    <section
+      id={Sections.reportsSection}
+      ref={ref}
+      className={`overflow-hidden bg-gray4 pb-[50px] pt-[20px] md:pb-[71px] lg:pt-[97px] ${isActive ? 'border-2 border-orange' : ''}`}
+    >
       <Container>
         <div className="flex flex-col gap-[47px] md:flex-row md:gap-[64px] md:pt-[30px] lg:gap-[165px]">
           <div className="flex flex-col gap-[34px] md:min-w-[48.5%] lg:min-w-[42.5%]">

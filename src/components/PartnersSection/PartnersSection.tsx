@@ -1,11 +1,31 @@
+'use client';
+
 import Image from 'next/image';
-import type { ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import { Sections, type ICompTypes } from '@/types/types';
 
 import Container from '../Container/Container';
 
-const PartnersSection = (): ReactElement => {
+const PartnersSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
+  const { ref, inView } = useInView({
+    threshold: 0.8,
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      onInView(Sections.partnerSection);
+    }
+  }, [onInView, inView]);
+
   return (
-    <section className="bg-gray3 pb-[81px] pt-[61px] md:pt-[54px] lg:pb-[132px] lg:pt-[135px]">
+    <section
+      id={Sections.partnerSection}
+      ref={ref}
+      className={`bg-gray3 pb-[81px] pt-[61px] md:pt-[54px] lg:pb-[132px] lg:pt-[135px] ${isActive ? 'border-2 border-orange' : ''}`}
+    >
       <Container>
         <div className="flex flex-col gap-[21px] md:flex-row md:gap-[14px]">
           <h5 className="w-[60%] text-[20px] font-[700] leading-[26px] md:w-1/4 md:pr-[20px] md:text-[16px] md:leading-[20px] lg:w-[38%] lg:pr-0 lg:text-[24px] lg:leading-[32px]">

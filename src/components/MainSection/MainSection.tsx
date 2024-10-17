@@ -1,14 +1,30 @@
-import type { ReactElement } from 'react';
+'use client';
+
+import { useEffect, type ReactElement } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import { Sections, type ICompTypes } from '@/types/types';
 
 import Button, { BtnTypeEnum } from '../Button/Button';
 import Container from '../Container/Container';
 import TabsList from '../TabsList/TabsList';
 
-const MainSection = (): ReactElement => {
+const MainSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
+  const { ref, inView } = useInView({
+    threshold: 0.8,
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      onInView(Sections.mainSection);
+    }
+  }, [onInView, inView]);
+
   return (
     <>
-      <section>
-        <div className="bg-mainBG relative z-10 bg-gray3 bg-cover bg-center bg-no-repeat pb-[100px] pt-[50px] text-black md:mt-[-96px] md:bg-auto md:bg-left md:pb-[185px] md:pt-[158px] lg:mt-[-92px] lg:bg-center lg:pb-[333px]">
+      <section id={Sections.mainSection} ref={ref} className={` ${isActive ? 'border-2 border-orange' : ''}`}>
+        <div className="relative z-10 bg-gray3 bg-mainBG bg-cover bg-center bg-no-repeat pb-[100px] pt-[50px] text-black md:mt-[-96px] md:bg-auto md:bg-left md:pb-[185px] md:pt-[158px] lg:mt-[-92px] lg:bg-center lg:pb-[333px]">
           <Container>
             <>
               <h1 className="mb-[32px] text-[36px] font-[700] leading-[110%] tracking-[-1.6px] md:text-[52px] md:tracking-[-1.9px] lg:mb-[40px] lg:text-[80px] lg:tracking-[-3.3px]">

@@ -1,5 +1,10 @@
+'use client';
+
 import Image from 'next/image';
-import type { ReactElement } from 'react';
+import { useEffect, type ReactElement } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import { Sections, type ICompTypes } from '@/types/types';
 
 import BalanceImg from './BalanceImg';
 import Container from '../Container/Container';
@@ -10,9 +15,24 @@ const content = [
   { text1: 'Максимальная выручка', text2: 'За счёт заполенения всех рекламных мест по высокой цене' },
 ];
 
-const BalanceBlock = (): ReactElement => {
+const BalanceBlock = ({ isActive, onInView }: ICompTypes): ReactElement => {
+  const { ref, inView } = useInView({
+    threshold: 0.8,
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      onInView(Sections.balanceSection);
+    }
+  }, [onInView, inView]);
+
   return (
-    <section className="bg-gray4 pb-[17px] pt-[43px] md:pb-[70px] md:pt-[82px] lg:pb-[159px] lg:pt-[106px]">
+    <section
+      ref={ref}
+      id={Sections.balanceSection}
+      className={`bg-gray4 pb-[17px] pt-[43px] md:pb-[70px] md:pt-[82px] lg:pb-[159px] lg:pt-[106px] ${isActive ? 'border-2 border-orange' : ''}`}
+    >
       <Container>
         <>
           <h3 className="mb-[34px] text-[24px] font-[700] leading-[31px] md:m-auto md:mb-[62px] md:max-w-[80%] md:text-center md:text-[28px] md:leading-[120%] lg:mb-[87px] lg:max-w-full lg:text-[32px]">
