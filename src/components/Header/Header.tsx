@@ -13,38 +13,38 @@ const Header = (): ReactElement => {
   };
 
   return (
-    <header className="bg-gray3 py-[15px] font-[family-name:var(--font-geist-Onest)] xl:py-[48px]">
+    <header className="bg-gray3 py-[15px] md:py-[32px] xl:py-[48px]">
       <Container>
-        <div className="flex items-center justify-between">
-          <div className="relative z-10 w-fit rounded-lg bg-white px-[34px] py-[5px] font-[900] text-black xl:px-[48px] xl:text-[22px] xl:font-extrabold">
+        <div className="flex items-center justify-between md:px-[10px] lg:px-0">
+          <div className="relative z-30 w-fit rounded-lg bg-white px-[34px] py-[5px] font-[900] text-black md:px-[48px] md:text-[22px] md:font-extrabold">
             LOGO
           </div>
           <button
             onClick={toggleMenu}
-            className="border-orange relative z-10 h-[32px] w-[32px] rounded-lg border-[2px] p-[4px] focus:outline-none lg:hidden"
+            className="relative z-50 h-[32px] w-[32px] rounded-lg border-[2px] border-orange p-[4px] focus:outline-none md:h-[44px] md:w-[44px] lg:hidden"
           >
             <span
-              className={`bg-orange block h-[2px] w-full origin-center transform transition-all duration-300 ${
-                menuOpen ? 'translate-y-1.5 rotate-45' : ''
+              className={`block h-[2px] w-full origin-center transform bg-orange transition-all duration-300 ${
+                menuOpen ? 'translate-y-1.5 rotate-45 md:translate-y-2.5' : ''
               }`}
             ></span>
             <span
-              className={`bg-orange mt-1 block h-[2px] w-full transform transition-all duration-300 ${
+              className={`mt-1 block h-[2px] w-full transform bg-orange transition-all duration-300 md:mt-2 ${
                 menuOpen ? 'opacity-0' : ''
               }`}
             ></span>
             <span
-              className={`bg-orange mt-1 block h-[2px] w-full transform transition-all duration-300 ${
-                menuOpen ? '-translate-y-1.5 -rotate-45' : ''
+              className={`mt-1 block h-[2px] w-full transform bg-orange transition-all duration-300 md:mt-2 ${
+                menuOpen ? '-translate-y-1.5 -rotate-45 md:-translate-y-2.5' : ''
               }`}
             ></span>
           </button>
           <nav
-            className={`fixed right-0 top-0 flex h-full w-full transform flex-col justify-center bg-white text-black transition-transform duration-300 md:w-[41%] ${
+            className={`fixed right-0 top-0 z-40 flex h-full w-full transform flex-col justify-center bg-white text-black transition-transform duration-300 md:w-[41%] ${
               menuOpen ? 'translate-x-0' : 'translate-x-full'
             } lg:static lg:h-fit lg:translate-x-0 lg:bg-transparent`}
           >
-            <ul className="flex flex-col items-start p-8 font-[700] lg:flex lg:flex-row lg:justify-end lg:gap-[68px] lg:p-0 lg:tracking-[0.5px]">
+            <ul className="flex flex-col items-start p-8 font-[700] lg:flex lg:flex-row lg:justify-end lg:gap-[65px] lg:p-0 lg:tracking-[0.5px]">
               <li className="mb-4 lg:mb-0">
                 <Link href="#" className="text-[14px]">
                   Преимущества

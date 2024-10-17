@@ -1,13 +1,9 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Onest } from 'next/font/google';
 import './globals.css';
 import type { ReactNode } from 'react';
 
-const geistOnest = localFont({
-  src: './fonts/Onest-VariableFont_wght.woff',
-  variable: '--font-geist-Onest',
-  weight: '400 500 700 900',
-});
+const inter = Onest({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'test-task-getshoptv',
@@ -21,7 +17,7 @@ export default function RootLayout({
 }>): ReactNode {
   return (
     <html lang="en">
-      <body className={`${geistOnest.variable} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }

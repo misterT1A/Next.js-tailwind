@@ -23,6 +23,9 @@ const config: Config = {
         lg: '1024px',
         xl: '1220px',
       },
+      backgroundImage: {
+        mainBG: " url('../../public/images/shapes.png')",
+      },
     },
   },
   plugins: [],
