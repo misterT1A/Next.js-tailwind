@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, type ReactElement } from 'react';
+import { memo, useEffect, type ReactElement } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { Sections, type ICompTypes } from '@/types/types';
+import { BtnTypeEnum, Sections, type ICompTypes } from '@/types/types';
 
-import Button, { BtnTypeEnum } from '../Button/Button';
+import Button from '../Button/Button';
 import Container from '../Container/Container';
 
 const list = [
@@ -15,7 +15,7 @@ const list = [
   'Ежемесячные автоматические отчёты для каждого правообладателя.',
 ];
 
-const ReportsSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
+const ReportsSection = memo(function ReportsSection({ isActive, onInView }: ICompTypes): ReactElement {
   const { ref, inView } = useInView({
     threshold: 0.8,
     triggerOnce: false,
@@ -76,6 +76,6 @@ const ReportsSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
       </Container>
     </section>
   );
-};
+});
 
 export default ReportsSection;

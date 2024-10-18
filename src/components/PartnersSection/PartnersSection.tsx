@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, type ReactElement } from 'react';
+import { memo, useEffect, type ReactElement } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { Sections, type ICompTypes } from '@/types/types';
 
 import Container from '../Container/Container';
 
-const PartnersSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
+const PartnersSection = memo(function PartnersSection({ isActive, onInView }: ICompTypes): ReactElement {
   const { ref, inView } = useInView({
     threshold: 0.8,
     triggerOnce: false,
@@ -59,6 +59,6 @@ const PartnersSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
       </Container>
     </section>
   );
-};
+});
 
 export default PartnersSection;

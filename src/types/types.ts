@@ -10,3 +10,16 @@ export enum Sections {
   reportsSection = 'reportsSection',
   formSection = 'formSection',
 }
+
+export enum BtnTypeEnum {
+  'orange',
+  'black',
+}
+
+export interface ButtonProps {
+  disabled?: boolean;
+  submit?: boolean;
+  text: string;
+  styles?: string;
+  variant: BtnTypeEnum;
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, type ReactElement } from 'react';
+import { memo, useEffect, type ReactElement } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { Sections, type ICompTypes } from '@/types/types';
@@ -15,7 +15,7 @@ const content = [
   { text1: 'Максимальная выручка', text2: 'За счёт заполенения всех рекламных мест по высокой цене' },
 ];
 
-const BalanceBlock = ({ isActive, onInView }: ICompTypes): ReactElement => {
+const BalanceBlock = memo(function BalanceBlock({ isActive, onInView }: ICompTypes): ReactElement {
   const { ref, inView } = useInView({
     threshold: 0.8,
     triggerOnce: false,
@@ -53,12 +53,8 @@ const BalanceBlock = ({ isActive, onInView }: ICompTypes): ReactElement => {
                       className="h-[18px] w-[18px] lg:h-[24px] lg:w-[24px]"
                       alt="arrow"
                     ></Image>
-                    <p className="text-[20px] font-[700] leading-[26px] md:pr-[40px] md:text-[16px] md:leading-[20px] lg:pr-[40px] lg:text-[24px] lg:leading-[32px]">
-                      {elem.text1}
-                    </p>
-                    <p className="text-[14px] font-[400] leading-[18px] md:pr-[18px] md:text-[12px] md:leading-[16px] lg:pr-[1px] lg:text-[18px] lg:leading-[22px]">
-                      {elem.text2}
-                    </p>
+                    <p className="title_3 md:pr-[40px] lg:pr-[40px]">{elem.text1}</p>
+                    <p className="text_3 md:pr-[18px] lg:pr-[1px]">{elem.text2}</p>
                   </div>
                 );
               }
@@ -68,6 +64,6 @@ const BalanceBlock = ({ isActive, onInView }: ICompTypes): ReactElement => {
       </Container>
     </section>
   );
-};
+});
 
 export default BalanceBlock;

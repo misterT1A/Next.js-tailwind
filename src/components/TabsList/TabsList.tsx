@@ -29,7 +29,7 @@ const TabsList = (): ReactElement => {
           ))}
         </div>
         <div
-          className="absolute left-0 top-0 h-full w-1/2 rounded-[5px] bg-black transition-transform duration-300 ease-in-out"
+          className="absolute left-0 top-0 h-full w-1/2 rounded-[5px] bg-black transition"
           style={{
             transform: `translateX(${activeTab * 100}%)`,
           }}

@@ -12,6 +12,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['prettier', 'react-refresh', 'react-compiler'],
   rules: {
+    'no-case-declarations': 'off',
     'react-compiler/react-compiler': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
