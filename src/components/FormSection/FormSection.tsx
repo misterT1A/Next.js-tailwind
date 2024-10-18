@@ -4,9 +4,9 @@ import type { ChangeEvent, FormEvent } from 'react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { Sections, type ICompTypes } from '@/types/types';
+import { BtnTypeEnum, Sections, type ICompTypes } from '@/types/types';
 
-import Button, { BtnTypeEnum } from '../Button/Button';
+import Button from '../Button/Button';
 import Container from '../Container/Container';
 
 const validateEmail = (value: string): boolean => {
@@ -57,19 +57,17 @@ const FormSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
     <section
       ref={ref}
       id={Sections.formSection}
-      className={`bg-gray3 pb-[26px] pt-[81px] md:pt-[53px] lg:pb-[220px] lg:pt-[130px] ${isActive ? 'border-2 border-orange' : ''}`}
+      className={`bg-gray3 pb-[26px] pt-[81px] md:pb-[46px] md:pt-[53px] lg:pb-[220px] lg:pt-[130px] ${isActive ? 'border-2 border-orange' : ''}`}
     >
       <Container>
         <form className="flex flex-col gap-[35px] lg:gap-[60px]" onSubmit={handleSubmit}>
-          <h5 className="text-[24px] font-[700] leading-[31px] md:text-[28px] md:leading-[120%] lg:text-[32px]">
-            Заполните форму
-          </h5>
+          <h2 className="title_2">Заполните форму</h2>
           <div className="flex flex-col gap-[35px] lg:flex-row">
             <textarea
               value={message}
               onChange={handleMessage}
               placeholder="Напишите свой вопрос"
-              className="min-h-[223px] rounded-lg border-[1px] border-gray1 bg-transparent p-[17px] text-[14px] leading-[18px] placeholder-black transition-all duration-300 focus:border-black focus:outline-none lg:w-[61%] lg:text-[18px] lg:leading-[22px]"
+              className="min-h-[223px] resize-none rounded-lg border-[1px] border-gray1 bg-transparent p-[17px] text-[14px] leading-[18px] placeholder-black transition-all duration-300 focus:border-black focus:outline-none lg:w-[61%] lg:text-[18px] lg:leading-[22px]"
             />
             <div className="flex flex-col gap-[35px] lg:mt-[10px]">
               <div className="relative w-full">
@@ -78,13 +76,9 @@ const FormSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
                   onChange={handleEMail}
                   type="text"
                   placeholder="Введите e-mail"
-                  className="w-full border-b-[1px] border-b-gray1 bg-transparent pb-[14px] text-[14px] leading-[20px] placeholder-black transition-all duration-300 focus:border-b-black focus:outline-none lg:text-[18px] lg:leading-[22px]"
+                  className="w-full border-b-[1px] border-b-gray1 bg-transparent pb-[14px] text-[14px] leading-[20px] placeholder-black transition focus:border-b-black focus:outline-none lg:text-[18px] lg:leading-[22px]"
                 />
-                {emailError && (
-                  <p className="absolute left-0 top-[38px] text-[10px] font-[500] leading-[13px] text-error">
-                    {emailError}
-                  </p>
-                )}
+                {emailError && <p className="error absolute left-0 top-[38px] text-error">{emailError}</p>}
               </div>
               <div className="flex gap-[8px]">
                 <input
@@ -96,7 +90,7 @@ const FormSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
                 />
                 <label
                   htmlFor="privacyPolicy"
-                  className={`flex h-[14px] min-w-[14px] cursor-pointer items-center justify-center rounded-[4px] border-[1px] border-gray1 transition-all duration-300 ${isChecked ? 'border-orange bg-orange bg-checkBox bg-center' : 'bg-transparent'}`}
+                  className={`flex h-[14px] min-w-[14px] cursor-pointer items-center justify-center rounded-[4px] border-[1px] border-gray1 transition ${isChecked ? 'border-orange bg-orange bg-checkBox bg-center' : 'bg-transparent'}`}
                 ></label>
                 <span className="mt-[-3px] pr-[3px] text-[14px]">
                   Я ознакомлен(а) с{' '}

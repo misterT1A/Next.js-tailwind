@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, type ReactElement } from 'react';
+import { memo, useEffect, type ReactElement } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { Sections, type ICompTypes } from '@/types/types';
+import { BtnTypeEnum, Sections, type ICompTypes } from '@/types/types';
 
-import Button, { BtnTypeEnum } from '../Button/Button';
+import Button from '../Button/Button';
 import Container from '../Container/Container';
 
 const list = [
@@ -15,7 +15,7 @@ const list = [
   'Ежемесячные автоматические отчёты для каждого правообладателя.',
 ];
 
-const ReportsSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
+const ReportsSection = memo(function ReportsSection({ isActive, onInView }: ICompTypes): ReactElement {
   const { ref, inView } = useInView({
     threshold: 0.8,
     triggerOnce: false,
@@ -36,7 +36,7 @@ const ReportsSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
       <Container>
         <div className="flex flex-col gap-[47px] md:flex-row md:gap-[64px] md:pt-[30px] lg:gap-[165px]">
           <div className="flex flex-col gap-[34px] md:min-w-[48.5%] lg:min-w-[42.5%]">
-            <div className="flex flex-col text-[24px] font-[700] leading-[31px] md:text-[28px] md:leading-[120%] lg:flex-row lg:flex-wrap lg:text-[32px]">
+            <div className="title_2 flex flex-col lg:flex-row lg:flex-wrap">
               <span className="order-1">Подробные&nbsp;</span>
               <span className="order-2">отчёты для вас и&nbsp;</span>
               <span className="order-3">правообладателей</span>
@@ -52,7 +52,7 @@ const ReportsSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
                     className="h-[18px] w-[18px] lg:h-[26px] lg:w-[26px]"
                     alt="arrow"
                   ></Image>
-                  <p className="text-[14px] leading-[18px] lg:text-[22px] lg:leading-[32px]">{elem}</p>
+                  <p className="text_2">{elem}</p>
                 </li>
               ))}
             </ul>
@@ -76,6 +76,6 @@ const ReportsSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
       </Container>
     </section>
   );
-};
+});
 
 export default ReportsSection;

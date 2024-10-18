@@ -19,7 +19,7 @@ const TabsList = (): ReactElement => {
           {tabs.map((tab, index) => (
             <button
               key={index}
-              className={`transition-color relative z-10 w-1/2 px-[12px] py-[5px] text-[12px] font-[700] duration-300 ease-in-out md:px-[22px] md:py-[6px] md:text-[16px] md:leading-[21px] lg:px-[37px] lg:py-[10px] lg:text-[24px] lg:leading-[32px] ${
+              className={`transition-color tab_btn_1 relative z-10 w-1/2 px-[12px] py-[5px] duration-300 ease-in-out md:px-[22px] md:py-[6px] lg:px-[37px] lg:py-[10px] ${
                 activeTab === index ? 'text-white' : 'text-gray1 hover:text-black'
               }`}
               onClick={() => setActiveTab(index)}
@@ -29,15 +29,13 @@ const TabsList = (): ReactElement => {
           ))}
         </div>
         <div
-          className="absolute left-0 top-0 h-full w-1/2 rounded-[5px] bg-black transition-transform duration-300 ease-in-out"
+          className="absolute left-0 top-0 h-full w-1/2 rounded-[5px] bg-black transition"
           style={{
             transform: `translateX(${activeTab * 100}%)`,
           }}
         />
       </div>
-      <div className="mt-[22px] min-h-[80px] text-[16px] font-[400] leading-[20px] md:mt-[19px] md:text-[14px] lg:min-h-[97px] lg:text-[22px] lg:leading-[32px]">
-        {content[activeTab]}
-      </div>
+      <div className="text_1 mt-[22px] min-h-[80px] md:mt-[19px] lg:min-h-[97px]">{content[activeTab]}</div>
     </div>
   );
 };

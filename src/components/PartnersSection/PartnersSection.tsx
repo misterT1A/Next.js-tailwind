@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, type ReactElement } from 'react';
+import { memo, useEffect, type ReactElement } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { Sections, type ICompTypes } from '@/types/types';
 
 import Container from '../Container/Container';
 
-const PartnersSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
+const PartnersSection = memo(function PartnersSection({ isActive, onInView }: ICompTypes): ReactElement {
   const { ref, inView } = useInView({
     threshold: 0.8,
     triggerOnce: false,
@@ -28,9 +28,7 @@ const PartnersSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
     >
       <Container>
         <div className="flex flex-col gap-[21px] md:flex-row md:gap-[14px]">
-          <h5 className="w-[60%] text-[20px] font-[700] leading-[26px] md:w-1/4 md:pr-[20px] md:text-[16px] md:leading-[20px] lg:w-[38%] lg:pr-0 lg:text-[24px] lg:leading-[32px]">
-            Наши партнёры по монетизации
-          </h5>
+          <h3 className="title_3 w-[60%] md:w-1/4 md:pr-[20px] lg:w-[38%] lg:pr-0">Наши партнёры по монетизации</h3>
           <div className="flex flex-wrap justify-center gap-[9px] md:mt-[-10px] md:w-[75%] md:gap-[50px] lg:mt-[-20px] lg:w-[62%] lg:gap-[88px]">
             <Image
               width={0}
@@ -61,6 +59,6 @@ const PartnersSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
       </Container>
     </section>
   );
-};
+});
 
 export default PartnersSection;

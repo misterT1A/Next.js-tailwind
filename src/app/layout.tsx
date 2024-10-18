@@ -3,6 +3,8 @@ import { Onest } from 'next/font/google';
 import './globals.css';
 import type { ReactNode } from 'react';
 
+import { Header } from '@/components';
+
 const inter = Onest({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -17,7 +19,10 @@ export default function RootLayout({
 }>): ReactNode {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        <Header />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

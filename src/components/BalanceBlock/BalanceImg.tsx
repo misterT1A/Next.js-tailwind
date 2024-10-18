@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import type { ReactElement } from 'react';
+import { memo, type ReactElement } from 'react';
 
-const BalanceImg = (): ReactElement => {
+const BalanceImg = memo(function BalanceImg(): ReactElement {
   return (
     <div className="mt-[-8px] flex flex-col items-center md:w-[37%] md:rotate-90 lg:mr-[10px] lg:w-[48%]">
       <div className="flex w-fit flex-col">
@@ -24,6 +24,6 @@ const BalanceImg = (): ReactElement => {
       </div>
     </div>
   );
-};
+});
 
 export default BalanceImg;
