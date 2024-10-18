@@ -27,6 +27,9 @@ const config: Config = {
         mainBG: "url('../../public/images/shapes.png')",
         checkBox: "url('../../public/images/checkBox.svg')",
       },
+      gridTemplateRows: {
+        layout: 'auto 1fr auto',
+      },
     },
   },
   plugins: [],

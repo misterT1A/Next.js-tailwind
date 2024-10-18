@@ -35,9 +35,9 @@ const BalanceBlock = ({ isActive, onInView }: ICompTypes): ReactElement => {
     >
       <Container>
         <>
-          <h3 className="mb-[34px] text-[24px] font-[700] leading-[31px] md:m-auto md:mb-[62px] md:max-w-[80%] md:text-center md:text-[28px] md:leading-[120%] lg:mb-[87px] lg:max-w-full lg:text-[32px]">
+          <h2 className="title_2 mb-[34px] md:m-auto md:mb-[62px] md:max-w-[80%] md:text-center lg:mb-[87px] lg:max-w-full">
             Баланс между выручкой и удовлетворённостью пользователей
-          </h3>
+          </h2>
           <div className="flex flex-col md:flex-row">
             {content.map((elem, index) => {
               if (typeof elem === 'string') {

@@ -61,15 +61,13 @@ const FormSection = ({ isActive, onInView }: ICompTypes): ReactElement => {
     >
       <Container>
         <form className="flex flex-col gap-[35px] lg:gap-[60px]" onSubmit={handleSubmit}>
-          <h5 className="text-[24px] font-[700] leading-[31px] md:text-[28px] md:leading-[120%] lg:text-[32px]">
-            Заполните форму
-          </h5>
+          <h2 className="title_2">Заполните форму</h2>
           <div className="flex flex-col gap-[35px] lg:flex-row">
             <textarea
               value={message}
               onChange={handleMessage}
               placeholder="Напишите свой вопрос"
-              className="min-h-[223px] rounded-lg border-[1px] border-gray1 bg-transparent p-[17px] text-[14px] leading-[18px] placeholder-black transition-all duration-300 focus:border-black focus:outline-none lg:w-[61%] lg:text-[18px] lg:leading-[22px]"
+              className="min-h-[223px] resize-none rounded-lg border-[1px] border-gray1 bg-transparent p-[17px] text-[14px] leading-[18px] placeholder-black transition-all duration-300 focus:border-black focus:outline-none lg:w-[61%] lg:text-[18px] lg:leading-[22px]"
             />
             <div className="flex flex-col gap-[35px] lg:mt-[10px]">
               <div className="relative w-full">

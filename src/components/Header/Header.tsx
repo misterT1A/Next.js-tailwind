@@ -78,7 +78,7 @@ const Header = (): ReactElement => {
                   <Link
                     onClick={handleScroll}
                     href="#"
-                    className="hover: text-[14px] transition-all duration-300 hover:text-orange active:underline"
+                    className="text-[14px] transition-all duration-300 hover:text-orange active:underline"
                   >
                     {elem}
                   </Link>
